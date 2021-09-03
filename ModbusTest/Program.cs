@@ -6,7 +6,7 @@ namespace ModbusTest
     {
         static void Main(string[] args)
         {
-            var instrumentBoard = new InstrumentBoard(1);
+            var instrumentBoard = new InstrumentBoard(1, 3);
 
             var temp = instrumentBoard.GetTemp();
             var longitude = instrumentBoard.GetLong();
@@ -43,7 +43,5 @@ namespace ModbusTest
             tempOffset = instrumentBoard.GetTempOffset();
             Console.WriteLine($"Temp Offset is {tempOffset}");
         }
-
-
     }
 }

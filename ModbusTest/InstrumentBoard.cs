@@ -19,9 +19,9 @@ namespace ModbusTest
         private ushort ledPower = 2001;
         private ushort stopComms = 2002;
         
-        public InstrumentBoard(int slaveId)
+        public InstrumentBoard(int slaveId, int serialPortNumber)
         {
-            this.modbus = new Modbus(slaveId);
+            this.modbus = new Modbus(slaveId, serialPortNumber);
         }
 
         public double GetTemp()

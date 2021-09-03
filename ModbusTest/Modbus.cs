@@ -7,15 +7,17 @@ namespace ModbusTest
     public class Modbus
     {
         private byte slaveId;
+        private string serialPortAddress;
 
-        public Modbus(int slaveId)
+        public Modbus(int slaveId, int serialPortNumber)
         {
             this.slaveId =  (byte) slaveId;
+            this.serialPortAddress = "COM" + serialPortNumber.ToString();
         }
         
         public int GetInputRegisterUInt16(ushort startAddress)
         {
-            using var serialPort = new SerialPort("COM3")
+            using var serialPort = new SerialPort(serialPortAddress)
             {
                 BaudRate = 9600, DataBits = 8, Parity = Parity.None, StopBits = StopBits.One
             };
@@ -32,7 +34,7 @@ namespace ModbusTest
         
         public int GetInputRegisterUInt32(ushort startAddress)
         {
-            using var serialPort = new SerialPort("COM3")
+            using var serialPort = new SerialPort(serialPortAddress)
             {
                 BaudRate = 9600, DataBits = 8, Parity = Parity.None, StopBits = StopBits.One
             };
@@ -49,7 +51,7 @@ namespace ModbusTest
 
         public int GetHoldingRegisterUInt16(ushort startAddress)
         {
-            using var serialPort = new SerialPort("COM3")
+            using var serialPort = new SerialPort(serialPortAddress)
             {
                 BaudRate = 9600, DataBits = 8, Parity = Parity.None, StopBits = StopBits.One
             };
@@ -66,7 +68,7 @@ namespace ModbusTest
         
         public int GetHoldingRegisterSignedInt16(ushort startAddress)
         {
-            using var serialPort = new SerialPort("COM3")
+            using var serialPort = new SerialPort(serialPortAddress)
             {
                 BaudRate = 9600, DataBits = 8, Parity = Parity.None, StopBits = StopBits.One
             };
@@ -86,7 +88,7 @@ namespace ModbusTest
 
         public void SetHoldingRegisterUInt16(ushort startAddress, ushort value)
         {
-            using var serialPort = new SerialPort("COM3")
+            using var serialPort = new SerialPort(serialPortAddress)
             {
                 BaudRate = 9600, DataBits = 8, Parity = Parity.None, StopBits = StopBits.One
             };
@@ -99,7 +101,7 @@ namespace ModbusTest
 
         public void SetHoldingRegisterSignedInt16(ushort startAddress, int value)
         {
-            using var serialPort = new SerialPort("COM3")
+            using var serialPort = new SerialPort(serialPortAddress)
             {
                 BaudRate = 9600, DataBits = 8, Parity = Parity.None, StopBits = StopBits.One
             };
